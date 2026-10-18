@@ -1,130 +1,267 @@
 
-/* 通配选择器：匹配页面上的所有元素 */
+/* 1. 全局颜色变量 */
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --primary: #2563eb;
+  --border: #e2e8f0;
+}
+
+/* 深色主题 */
+body.dark {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --primary: #60a5fa;
+  --border: #334155;
+}
+
+/* 2. 基础设置 */
 * {
-  /* 让元素的宽高包含 padding 和 border，避免布局被撑破 */
   box-sizing: border-box;
 }
 
-/* 页面主体：设置整体字体、颜色、背景和行高 */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  /* 去掉浏览器默认的 8px 外边距，让内容贴边布局 */
   margin: 0;
-  /* 字体依次回退：Arial → 微软雅黑 → 系统无衬线字体 */
   font-family: Arial, "Microsoft YaHei", sans-serif;
-  /* 文字颜色（深蓝灰） */
-  color: #263449;
-  /* 页面背景色（浅灰蓝） */
-  background: #f4f7fb;
-  /* 行高为字号的 1.7 倍，让段落更易阅读 */
   line-height: 1.7;
+  background: var(--bg);
+  color: var(--text);
 }
 
-/* 页头：标题与导航栏左右分布在同一行 */
-header {
-  /* 用弹性布局排列子元素 */
-  display: flex;
-  /* 子元素分别靠左和靠右，中间留空 */
-  justify-content: space-between;
-  /* 子元素在垂直方向居中对齐 */
-  align-items: center;
-  /* 内边距：上下 18px，左右为父容器宽度的 8% */
-  padding: 18px 8%;
-  /* 页头背景为白色 */
-  background: white;
-}
-
-/* 导航栏中的链接 */
-nav a {
-  /* 每个链接左侧留 20px 间距 */
-  margin-left: 20px;
-  /* 链接文字颜色与正文一致 */
-  color: #263449;
-  /* 去掉下划线 */
+a {
+  color: inherit;
   text-decoration: none;
 }
 
-/* 主体内容区 */
-main {
-  /* 最大宽度 960px，避免在宽屏上文字行过长 */
-  max-width: 960px;
-  /* 水平方向自动外边距，实现整体居中 */
-  margin: auto;
-  /* 四周内边距 24px */
-  padding: 24px;
-}
-
-/* 首屏欢迎区块 */
-.hero {
-  /* 区块内文字水平居中 */
-  text-align: center;
-  /* 上下内边距 80px、左右 20px，营造留白 */
-  padding: 80px 20px;
-}
-
-/* 首屏区块中的一级标题 */
-.hero h1 {
-  /* 字号随视口变化：最小 28px，理想 5vw，最大 42px */
-  font-size: clamp(28px, 5vw, 42px);
-}
-
-/* 页面中的所有按钮 */
 button {
-  /* 按钮内边距：上下 12px、左右 28px */
-  padding: 12px 28px;
-  /* 按钮背景色（蓝色） */
-  background: #2563eb;
-  /* 按钮文字颜色为白色 */
-  color: white;
-  /* 去掉默认边框 */
-  border: none;
-  /* 圆角 8px */
-  border-radius: 8px;
-  /* 鼠标悬停时显示手型光标，提示可点击 */
+  font: inherit;
   cursor: pointer;
 }
 
-/* 鼠标悬停在按钮上的状态 */
-button:hover {
-  /* 悬停时背景加深，产生反馈效果 */
-  background: #1d4ed8;
+.container {
+  width: min(1100px, 90%);
+  margin: 0 auto;
 }
 
-/* 页面中的每个 section 区块 */
-section {
-  /* 区块之间留出 50px 间距 */
-  margin-bottom: 50px;
+/* 3. 顶部导航 */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
 }
 
-/* 项目卡片 */
-.project-card {
-  /* 卡片内边距 24px */
-  padding: 24px;
-  /* 圆角 12px */
-  border-radius: 12px;
-  /* 卡片背景为白色，与页面背景形成对比 */
-  background: white;
-  /* 淡淡的下投影，营造卡片浮起的效果（末尾 a 表示透明度） */
-  box-shadow: 0 4px 18px #0000000a;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
 }
 
-/* 页脚 */
-footer {
-  /* 文字水平居中 */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.theme-btn {
+  padding: 8px 14px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* 4. 首页大标题 */
+.hero {
   text-align: center;
-  /* 内边距 24px */
-  padding: 24px;
-  /* 文字颜色为浅灰蓝，弱化显示 */
-  color: #64748b;
+  padding: 110px 0 90px;
 }
 
-/* 媒体查询：当屏幕宽度不超过 600px（手机等窄屏）时生效 */
-@media (max-width: 600px) {
-  /* 窄屏下页头改为纵向排列，标题在上、导航在下 */
-  header {
-    flex-direction: column;
+.eyebrow {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  margin: 16px 0;
+  font-size: clamp(32px, 5vw, 52px);
+}
+
+.hero h1 span {
+  color: var(--primary);
+}
+
+.intro {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+body.dark .primary {
+  color: #0f172a;
+}
+
+.secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* 5. 内容区域 */
+.section {
+  padding: 45px 0;
+  scroll-margin-top: 20px;
+}
+
+.section h2 {
+  font-size: 28px;
+  margin: 0 0 12px;
+}
+
+.section-desc {
+  color: var(--muted);
+  max-width: 750px;
+}
+
+/* 技能标签 */
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.skill-list span {
+  padding: 9px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+}
+
+/* 6. 项目卡片 */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.project-card {
+  padding: 30px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: transform 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-icon {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.project-card p {
+  color: var(--muted);
+}
+
+.tag {
+  display: inline-block;
+  padding: 5px 12px;
+  color: var(--primary);
+  background: var(--bg);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* 7. 互动区域和页脚 */
+.interactive-box {
+  text-align: center;
+  padding: 35px;
+  background: var(--surface);
+  border-radius: 16px;
+}
+
+#message {
+  color: var(--primary);
+}
+
+footer {
+  text-align: center;
+  padding: 35px 15px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* 8. 手机端适配 */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
   }
-  /* 窄屏下缩小链接之间的间距，让导航更紧凑 */
-  nav a {
-    margin: 0 10px;
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .hero {
+    padding: 65px 0;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 30px 0;
   }
 }
