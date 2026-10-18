@@ -25,6 +25,7 @@ const W = canvas.width, H = canvas.height;
 ctx.imageSmoothingEnabled = false;
 document.querySelector("#year").textContent = new Date().getFullYear();
 
+const NORMAL_PLAYBACK_RATE = 1;
 const sceneNames = {city:"01 // 霓虹夜城", ocean:"02 // 落日海岸", forest:"03 // 星夜森林"};
 const sceneNamesList = ["city", "ocean", "forest"];
 let scene = "city";
@@ -32,6 +33,19 @@ let tracks = [];
 let currentIndex = -1;
 let audioContext, analyser, frequencyData;
 let energy = 0;
+
+function enforceNormalPlaybackRate() {
+  if (audio.defaultPlaybackRate !== NORMAL_PLAYBACK_RATE) {
+    audio.defaultPlaybackRate = NORMAL_PLAYBACK_RATE;
+  }
+  if (audio.playbackRate !== NORMAL_PLAYBACK_RATE) {
+    audio.playbackRate = NORMAL_PLAYBACK_RATE;
+  }
+}
+
+function updateDurationDisplay() {
+  timeTotal.textContent = formatTime(audio.duration);
+}
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
