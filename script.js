@@ -1,11 +1,44 @@
 
-// 根据 id 获取页面中的按钮元素，保存到常量 button 中
-const button = document.getElementById("helloBtn");
-// 根据 id 获取用于显示提示文字的段落元素，保存到常量 message 中
-const message = document.getElementById("message");
+/* 获取网页元素 */
+const themeBtn = document.querySelector("#themeToggle");
+const helloBtn = document.querySelector("#helloBtn");
+const message = document.querySelector("#message");
 
-// 给按钮绑定 click（点击）事件监听器
-button.addEventListener("click", () => {
-  // 点击后把提示文字写入 message 段落，显示给用户
-  message.textContent = "恭喜！你的 JavaScript 已经运行成功。";
+/* 更新深色模式按钮 */
+function updateThemeButton() {
+  const isDark = document.body.classList.contains("dark");
+
+  themeBtn.textContent = isDark ? "浅色模式" : "深色模式";
+  themeBtn.setAttribute("aria-pressed", String(isDark));
+}
+
+/* 恢复之前保存的主题 */
+if (localStorage.getItem("siteTheme") === "dark") {
+  document.body.classList.add("dark");
+}
+
+updateThemeButton();
+
+/* 点击按钮切换主题 */
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+
+  localStorage.setItem(
+    "siteTheme",
+    isDark ? "dark" : "light"
+  );
+
+  updateThemeButton();
 });
+
+/* 点击互动按钮 */
+helloBtn.addEventListener("click", () => {
+  message.textContent =
+    "恭喜！你已经成功实现了 JavaScript 页面交互。";
+});
+
+/* 自动显示当前年份 */
+document.querySelector("#year").textContent =
+  new Date().getFullYear();
