@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="StarryZW 的像素音乐馆：在像素风景中聆听音乐。">
+  <title>Pixel Radio | StarryZW</title>
+  <link rel="stylesheet" href="music.css">
+  <script src="music.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <div class="page-wrap">
+    <header class="topbar">
+      <a class="brand" href="../index.html" aria-label="返回 StarryZW 的主页">
+        <span class="brand-mark">✦</span> StarryZW <span class="brand-suffix">/ MUSIC</span>
+      </a>
+      <a class="back-link" href="../index.html">← 返回主页</a>
+    </header>
+
+    <div class="intro">
+      <div class="eyebrow"><span class="signal-dot"></span> YOUR LITTLE CORNER OF THE UNIVERSE</div>
+      <h1>PIXEL <span>RADIO</span><span class="cursor">_</span></h1>
+      <p>挑一首喜欢的歌，让像素世界随旋律起舞。</p>
+    </div>
+
+    <main class="player-layout">
+      <section class="viewer card" aria-label="像素音乐播放器">
+        <div class="card-topline">
+          <div class="status"><span class="on-air-dot"></span> <span id="statusText">PIXEL WORLD · STANDBY</span></div>
+          <span class="live-chip">● LIVE CANVAS</span>
+        </div>
+
+        <div class="screen-frame">
+          <canvas id="mvCanvas" width="320" height="180" role="img" aria-label="会随音乐节奏变化的动态像素风景"></canvas>
+          <div class="screen-scanlines" aria-hidden="true"></div>
+          <div class="screen-label"><span>★ STARBYTE STATION</span><span id="sceneLabel">01 // 霓虹夜城</span></div>
+        </div>
+
+        <div class="track-info">
+          <div class="vinyl" id="vinyl" aria-hidden="true"><span class="vinyl-center">♪</span></div>
+          <div class="track-meta">
+            <span class="track-kicker">NOW PLAYING</span>
+            <h2 id="trackTitle">还没有选择歌曲</h2>
+            <p id="trackSubtitle">从右侧添加本地音乐，开始这趟像素旅程</p>
+          </div>
+          <div class="wave-symbol" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="playback" aria-label="播放控制">
+          <div class="progress-row">
+            <span id="timeCurrent" class="time">0:00</span>
+            <input id="seek" type="range" min="0" max="1000" value="0" aria-label="播放进度">
+            <span id="timeTotal" class="time">0:00</span>
+          </div>
+          <div class="playback-controls">
+            <div class="control-spacer"></div>
+            <div class="main-controls">
+              <button class="icon-btn" type="button" id="prevBtn" title="上一首" aria-label="上一首">⏮</button>
+              <button class="play-btn" type="button" id="playBtn" title="播放或暂停" aria-label="播放">▶</button>
+              <button class="icon-btn" type="button" id="nextBtn" title="下一首" aria-label="下一首">⏭</button>
+            </div>
+            <div class="volume-wrap"><span aria-hidden="true">♫</span><input id="volume" type="range" min="0" max="100" value="80" aria-label="音量"></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <section class="card library">
+          <div class="section-head"><div><span class="small-label">YOUR COLLECTION</span><h2>我的歌单 <span id="trackCount" class="count">0</span></h2></div><span class="sparkle">✧</span></div>
+          <label class="upload-btn" for="fileInput"><span class="upload-plus">＋</span> 选择本地歌曲 <span class="upload-arrow">↗</span></label>
+          <input id="fileInput" type="file" accept="audio/*,.mp3,.wav,.m4a,.ogg,.aac,.flac" multiple hidden>
+          <p class="hint">支持同时选择多首。音乐仅在本机浏览器播放，不会上传到网站。</p>
+          <ol id="playlist" class="playlist"><li class="empty-list"><span class="empty-note">♫</span><strong>还没有歌曲</strong><span>点击上方按钮，挑选你的音乐</span></li></ol>
+        </section>
+
+        <section class="card scenes">
+          <div class="section-head"><div><span class="small-label">CHANGE YOUR WORLD</span><h2>像素场景</h2></div><span class="sparkle">✳</span></div>
+          <div class="scene-options" role="group" aria-label="选择像素场景">
+            <button type="button" class="scene-option active" data-scene="city" aria-pressed="true"><span class="scene-emoji">🌃</span><span>霓虹夜城</span><small>01</small></button>
+            <button type="button" class="scene-option" data-scene="ocean" aria-pressed="false"><span class="scene-emoji">🌅</span><span>落日海岸</span><small>02</small></button>
+            <button type="button" class="scene-option" data-scene="forest" aria-pressed="false"><span class="scene-emoji">🌲</span><span>星夜森林</span><small>03</small></button>
+          </div>
+          <p class="hint">风景会持续运动，音乐低频会驱动光效与像素音柱。</p>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="footer"><span>© <span id="year"></span> STARRYZW · PIXEL RADIO</span><span>MADE WITH HTML · CSS · JAVASCRIPT · CANVAS</span></footer>
+  </div>
+  <audio id="audio" preload="metadata"></audio>
+</body>
+</html>
