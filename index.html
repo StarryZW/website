@@ -1,74 +1,135 @@
 
-<!-- 文档类型声明：告诉浏览器按 HTML5 标准模式解析本页面 -->
 <!DOCTYPE html>
-<!-- 根元素，lang="zh-CN" 表示页面语言为简体中文，便于搜索引擎和屏幕阅读器识别 -->
 <html lang="zh-CN">
-<!-- head：页面元信息区域，内容不会直接显示在页面上 -->
 <head>
-  <!-- 指定字符编码为 UTF-8，避免中文出现乱码 -->
   <meta charset="UTF-8">
-  <!-- 移动端适配：让页面宽度等于设备屏幕宽度，初始缩放比例为 1.0 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 浏览器标签页上显示的标题 -->
-  <title>我的个人网站</title>
-  <!-- 引入外部样式表，负责控制页面的外观 -->
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>StarryZW | 我的个人网站</title>
+
   <link rel="stylesheet" href="style.css">
-  <!-- 引入外部脚本；defer 表示等 HTML 解析完成后再执行脚本 -->
   <script src="script.js" defer></script>
 </head>
-<!-- body：页面可见内容的容器 -->
+
 <body>
-  <!-- 页头区域，用来放置网站标题和导航栏 -->
-  <header>
-    <!-- 二级标题，作为网站名称 -->
-    <h2>我的个人空间</h2>
-    <!-- 导航栏，包含页面内的跳转链接 -->
-    <nav>
-      <!-- 锚点链接，点击后跳转到 id="about" 的区块 -->
-      <a href="#about">关于我</a>
-      <!-- 锚点链接，点击后跳转到 id="projects" 的区块 -->
-      <a href="#projects">我的项目</a>
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <nav class="container navbar">
+      <a class="logo" href="#">StarryZW<span>.</span></a>
+
+      <div class="nav-links">
+        <a href="#about">关于我</a>
+        <a href="#skills">技术学习</a>
+        <a href="#projects">我的项目</a>
+      </div>
+
+      <button id="themeToggle"
+              class="theme-btn"
+              type="button"
+              aria-pressed="false">
+        深色模式
+      </button>
     </nav>
   </header>
 
-  <!-- main：页面主体内容区域，一个页面通常只出现一次 -->
   <main>
-    <!-- 首屏欢迎区块，class="hero" 供 CSS 选中并设置样式 -->
-    <section class="hero">
-      <!-- 一级标题，页面最重要的主标题 -->
-      <h1>你好，欢迎来到我的网站！</h1>
-      <!-- 段落文本，简短的自我介绍 -->
-      <p>这是我学习 Web 开发的第一个作品。</p>
-      <!-- 按钮，id 用于在 JavaScript 中获取该元素并绑定点击事件 -->
-      <button id="helloBtn">点击这里</button>
-      <!-- 空段落，id="message" 供 JavaScript 动态写入提示文字 -->
-      <p id="message"></p>
+    <!-- 主页介绍 -->
+    <section class="hero container">
+      <p class="eyebrow">WELCOME TO MY WEBSITE</p>
+
+      <h1>你好，我是 <span>StarryZW</span></h1>
+
+      <p class="intro">
+        欢迎来到我的个人空间。
+        我热爱编程、技术探索与持续学习。
+        这里记录我的技术成长与项目实践。
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="#projects">
+          浏览我的项目
+        </a>
+        <a class="btn secondary" href="#about">
+          了解更多
+        </a>
+      </div>
     </section>
 
-    <!-- 关于我区块，id="about" 是导航栏锚点链接的跳转目标 -->
-    <section id="about">
-      <!-- 该区块的标题 -->
+    <!-- 关于我 -->
+    <section id="about" class="section container">
       <h2>关于我</h2>
-      <!-- 描述自己正在学习的内容 -->
-      <p>我正在学习前端、后端和网站部署。</p>
+      <p class="section-desc">
+        我是一名技术学习者，正在探索 Web 开发、
+        Python 编程与人工智能。
+        这个网站也是我的 Web 开发实践项目。
+      </p>
     </section>
 
-    <!-- 我的项目区块，id="projects" 是导航栏锚点链接的跳转目标 -->
-    <section id="projects">
-      <!-- 该区块的标题 -->
+    <!-- 技术学习 -->
+    <section id="skills" class="section container">
+      <h2>技术学习</h2>
+      <p class="section-desc">
+        目前正在学习和使用的技术。
+      </p>
+
+      <div class="skill-list">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Python</span>
+        <span>Git & GitHub</span>
+      </div>
+    </section>
+
+    <!-- 项目展示 -->
+    <section id="projects" class="section container">
       <h2>我的项目</h2>
-      <!-- 单个项目卡片的容器，class 供 CSS 设置卡片样式 -->
-      <div class="project-card">
-        <!-- 项目名称 -->
-        <h3>个人网站开发</h3>
-        <!-- 项目所使用的技术说明 -->
-        <p>使用 HTML、CSS 和 JavaScript 搭建。</p>
+      <p class="section-desc">
+        记录一些有趣的开发实践。
+      </p>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-icon">01</div>
+          <h3>个人网站开发</h3>
+          <p>
+            从零学习 HTML、CSS、JavaScript，
+            将网站部署到 GitHub Pages。
+          </p>
+          <span class="tag">Web Development</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-icon">02</div>
+          <h3>Python 学习</h3>
+          <p>
+            学习 Python 编程，探索自动化、
+            数据处理及后端开发技术。
+          </p>
+          <span class="tag">Python</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- JavaScript 互动 -->
+    <section class="section container">
+      <div class="interactive-box">
+        <h2>一个小互动</h2>
+        <p>点击下面的按钮，体验 JavaScript。</p>
+
+        <button id="helloBtn" class="btn primary">
+          点击试试
+        </button>
+
+        <p id="message" aria-live="polite"></p>
       </div>
     </section>
   </main>
 
-  <!-- 页脚，通常用于显示版权或站点信息 -->
-  <footer>我的第一个网站 · 2026</footer>
+  <footer>
+    © <span id="year"></span> StarryZW
+    · Built with HTML, CSS & JavaScript
+  </footer>
 </body>
-<!-- 根元素结束标签 -->
 </html>
