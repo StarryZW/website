@@ -65,15 +65,17 @@
             </div>
             <div class="volume-wrap"><span aria-hidden="true">♫</span><input id="volume" type="range" min="0" max="100" value="80" aria-label="音量"></div>
           </div>
+          <p id="audioDiagnostics" class="diagnostics" aria-live="polite">播放速度固定 1.0×</p>
         </div>
       </section>
 
       <aside class="sidebar">
         <section class="card library">
-          <div class="section-head"><div><span class="small-label">YOUR COLLECTION</span><h2>我的歌单 <span id="trackCount" class="count">0</span></h2></div><span class="sparkle">✧</span></div>
+          <div class="section-head"><div><span class="small-label">YOUR COLLECTION</span><h2>我的歌单 <span id="trackCount" class="count">0</span></h2></div><button id="clearBtn" type="button" class="clear-btn" hidden>清空歌单</button></div>
           <label class="upload-btn" for="fileInput"><span class="upload-plus">＋</span> 选择本地歌曲 <span class="upload-arrow">↗</span></label>
-          <input id="fileInput" type="file" accept="audio/*,.mp3,.wav,.m4a,.ogg,.aac,.flac" multiple hidden>
-          <p class="hint">支持同时选择多首。音乐仅在本机浏览器播放，不会上传到网站。</p>
+          <input id="fileInput" type="file" accept="audio/*,.mp3,.wav,.m4a,.ogg,.aac,.flac,.opus" multiple hidden>
+          <p class="hint">支持多首歌曲，自动拒绝重复文件。歌曲仅在本机浏览器播放，不会上传到网站。</p>
+          <p id="libraryNotice" class="library-notice" role="status" aria-live="polite">添加后可点击每首歌右侧的 × 删除。</p>
           <ol id="playlist" class="playlist"><li class="empty-list"><span class="empty-note">♫</span><strong>还没有歌曲</strong><span>点击上方按钮，挑选你的音乐</span></li></ol>
         </section>
 

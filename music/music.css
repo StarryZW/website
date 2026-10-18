@@ -98,3 +98,16 @@ input[type=range] { accent-color:var(--mint);cursor:pointer;min-width:0; }
 @media (max-width:950px) { .player-layout {grid-template-columns:1fr;} .sidebar {grid-template-columns:1fr 1fr;} }
 @media (max-width:650px) { .page-wrap {padding:0 15px;} .topbar {min-height:67px;} .brand {font-size:17px;} .brand-suffix{display:none;} .intro {padding:34px 0 23px;} .intro h1{letter-spacing:-3px;} .viewer{padding:12px;} .sidebar {grid-template-columns:1fr;} .library,.scenes{padding:18px;} .screen-label {font-size:7px;} .control-spacer{width:30px;} .volume-wrap {width:85px;} .volume-wrap input{width:61px;} .main-controls{gap:9px;} .track-meta h2{font-size:17px;} }
 @media (prefers-reduced-motion:reduce) { .cursor,.vinyl.spinning,.wave-symbol.playing span {animation:none;} *{scroll-behavior:auto;} }
+
+/* V1.1：歌单管理与音频诊断 */
+.track-item { display:flex; align-items:stretch; gap:5px; }
+.track-item .track-button { flex:1; width:auto; min-width:0; }
+.delete-track { flex:0 0 36px; border:1px solid transparent; background:transparent; color:#93a5c1; border-radius:9px; font-size:23px; line-height:1; }
+.delete-track:hover, .delete-track:focus-visible { color:#ffd2dc; background:#70384b; border-color:#b65e79; }
+.clear-btn { background:transparent; border:1px solid #54617b; color:#c3cfe2; padding:6px 10px; font-size:12px; border-radius:7px; white-space:nowrap; }
+.clear-btn:hover { color:#ffd5e0; border-color:#ed8ea7; }
+.clear-btn[hidden] { display:none; }
+.library-notice { font-size:12px; line-height:1.55; min-height:18px; color:var(--mint); margin:12px 0 0; }
+.library-notice.warning, .diagnostics.warning { color:#ffc88b; }
+.upload-btn.busy { opacity:.65; cursor:wait; }
+.diagnostics { font-size:11px; color:#879cba; margin:12px 0 0; line-height:1.55; }
